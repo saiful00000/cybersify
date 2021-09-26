@@ -5,10 +5,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SplashScreen extends StatelessWidget {
+class VerifyScreen extends StatelessWidget {
   Function wp = () {};
   Function hp = () {};
-
   @override
   Widget build(BuildContext context) {
     wp = Screen(MediaQuery.of(context).size).wp;
@@ -19,32 +18,33 @@ class SplashScreen extends StatelessWidget {
           height: hp(100),
           width: wp(100),
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomRight,
-              colors: [
-                Color(0xff004D79),
-                Color(0xff051C3E),
-                Color(0xff051C3E),
-                Color(0xff701D5B),
-              ]
-            )
+              gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Color(0xff004D79),
+                    Color(0xff051C3E),
+                    Color(0xff051C3E),
+                    Color(0xff701D5B),
+                  ]
+              )
           ),
 
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Image.asset('assets/app_icon.png',height: 200,width: 150,),
+              SizedBox(height: 20,),
+              Image.asset('assets/app_icon.png',height: 150,width: 150,),
 
-              Container(
-                child: Column(
-                  children: [
-                    _button("LOGIN"),
-                    SizedBox(height: 20,),
-                    _button("SIGN UP"),
-                  ],
-                ),
-              )
+              Text('Verification',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                fontSize: 25
+              ),),
+              _button('nid'),
+              _button('pass')
+
             ],
           ),
         ),
@@ -52,17 +52,18 @@ class SplashScreen extends StatelessWidget {
     );
   }
 
+
   Widget _button(String s) {
     return  TextButton(
         onPressed: (){
-          if(s == 'LOGIN') Get.to(()=>LoginPage(),transition: Transition.cupertino);
-          else if(s == 'SIGN UP') Get.to(()=>SignUpPage(),transition: Transition.cupertino);
+          if(s == 'nid') Get.to(()=>LoginPage(),transition: Transition.cupertino);
+          else if(s == 'pass') Get.to(()=>SignUpPage(),transition: Transition.cupertino);
         },
         child: Container(
           alignment: Alignment.center,
           constraints: BoxConstraints(
-              maxHeight: 45,
-              maxWidth: 160
+              maxHeight: 200,
+              maxWidth: 200
           ),
           decoration: BoxDecoration(
               gradient: LinearGradient(
