@@ -1,5 +1,3 @@
-import 'package:cybersify/pages/login_page.dart';
-import 'package:cybersify/pages/sign_up_page.dart';
 import 'package:cybersify/pages/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,10 +14,24 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         primaryColor: Colors.blue,
-        accentColor: Colors.blueAccent,
+        colorScheme: ColorScheme(
+          secondary: Colors.blueAccent,
+          background: Colors.white,
+          brightness: Brightness.light,
+          error: Colors.red,
+          onBackground: Colors.white,
+          primary: Colors.blue,
+          onError: Colors.red,
+          onPrimary: Colors.blue,
+          onSecondary: Colors.blueAccent,
+          surface: Colors.white,
+          onSurface: Colors.white,
+          primaryVariant: Colors.blue,
+          secondaryVariant: Colors.blueAccent,
+        ),
         scaffoldBackgroundColor: Color(0xFFE5E6E7),
       ),
-      home: /*SignUpPage()*/SplashScreen(),
+      home: SplashScreen(),
     );
   }
 }
