@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Cybersify',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        primaryColor: Colors.blue,
+        primaryColor:  Color(0xff051C3E),
         accentColor: Colors.blueAccent,
         scaffoldBackgroundColor: Color(0xFFE5E6E7),
       ),
