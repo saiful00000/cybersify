@@ -19,7 +19,7 @@ class SignUpPage extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(wp(6)),
+          padding: EdgeInsets.only(left:wp(10),right: wp(10),bottom: wp(6),top: wp(6)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -35,20 +35,19 @@ class SignUpPage extends StatelessWidget {
               SizedBox(
                 height: hp(5),
               ),
-              Text('Full Name'),
-              SizedBox(
-                height: 8,
-              ),
+
               TextFormField(
                 focusNode: fullNameNode,
                 decoration: InputDecoration(
-                  hintText: '',
+                  hintText: 'Full Name',
                   hintStyle: TextStyle(color: Colors.grey),
                   contentPadding: EdgeInsets.symmetric(horizontal: 16),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide.none,
                   ),
+                  prefixIcon: Icon(Icons.person),
+
                   filled: true,
                   fillColor: Colors.white,
                 ),
@@ -56,20 +55,17 @@ class SignUpPage extends StatelessWidget {
               SizedBox(
                 height: hp(1.5),
               ),
-              Text('Phone nUmber'),
-              SizedBox(
-                height: 8,
-              ),
               TextFormField(
                 focusNode: phoneNode,
                 decoration: InputDecoration(
-                  hintText: '',
+                  hintText: 'Phone nUmber',
                   hintStyle: TextStyle(color: Colors.grey),
                   contentPadding: EdgeInsets.symmetric(horizontal: 16),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide.none,
                   ),
+                  prefixIcon: Icon(Icons.phone),
                   filled: true,
                   fillColor: Colors.white,
                 ),
@@ -78,20 +74,20 @@ class SignUpPage extends StatelessWidget {
               SizedBox(
                 height: hp(1.5),
               ),
-              Text('Email Address'),
               SizedBox(
                 height: 8,
               ),
               TextFormField(
                 focusNode: emailNode,
                 decoration: InputDecoration(
-                  hintText: '',
+                  hintText: 'Email Address',
                   hintStyle: TextStyle(color: Colors.grey),
                   contentPadding: EdgeInsets.symmetric(horizontal: 16),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide.none,
                   ),
+                  prefixIcon: Icon(Icons.mail),
                   filled: true,
                   fillColor: Colors.white,
                 ),
@@ -100,20 +96,18 @@ class SignUpPage extends StatelessWidget {
               SizedBox(
                 height: hp(1.5),
               ),
-              Text('Password'),
-              SizedBox(
-                height: 8,
-              ),
+
               TextFormField(
                 focusNode: passwordNode,
                 decoration: InputDecoration(
-                  hintText: '',
+                  hintText: 'Password',
                   hintStyle: TextStyle(color: Colors.grey),
                   contentPadding: EdgeInsets.symmetric(horizontal: 16),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide.none,
                   ),
+                  prefixIcon: Icon(Icons.vpn_key),
                   filled: true,
                   fillColor: Colors.white,
                 ),
@@ -122,20 +116,18 @@ class SignUpPage extends StatelessWidget {
               SizedBox(
                 height: hp(1.5),
               ),
-              Text('ID Card Number'),
-              SizedBox(
-                height: 8,
-              ),
+
               TextFormField(
                 focusNode: nIdCardNode,
                 decoration: InputDecoration(
-                  hintText: '',
+                  hintText: 'ID Card Number',
                   hintStyle: TextStyle(color: Colors.grey),
                   contentPadding: EdgeInsets.symmetric(horizontal: 16),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide.none,
                   ),
+                  prefixIcon: Icon(Icons.credit_card_outlined),
                   filled: true,
                   fillColor: Colors.white,
                 ),

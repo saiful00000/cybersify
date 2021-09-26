@@ -1,4 +1,5 @@
 import 'package:cybersify/pages/splash_screen.dart';
+import 'package:cybersify/pages/verify_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: Color(0xFFE5E6E7),
       ),
-      home: SplashScreen(),
+      home: /*SignUpPage()*/SplashScreen()/*VerifyScreen()*/,
     );
   }
 }
