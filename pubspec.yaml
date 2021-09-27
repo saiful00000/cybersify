@@ -26,6 +26,10 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
+  fonts:
+  - family: Bahnschrift
+    fonts:
+      - asset: assets/fonts/BAHNSCHRIFT.TTF
   assets:
    - assets/
   #   - images/a_dot_ham.jpeg

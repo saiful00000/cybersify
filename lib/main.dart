@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         primaryColor:  Color(0xff051C3E),
+        fontFamily: 'Bahnschrift',
         accentColor: Colors.blueAccent,
         colorScheme: ColorScheme(
           secondary: Colors.blueAccent,
