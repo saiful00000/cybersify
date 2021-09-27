@@ -19,41 +19,38 @@ class SplashScreen extends StatelessWidget {
     _checkuserLoginState();
     
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          height: hp(100),
-          width: wp(100),
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomRight,
-                  colors: [
-                Color(0xff004D79),
-                Color(0xff051C3E),
-                Color(0xff051C3E),
-                Color(0xff701D5B),
-              ])),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Image.asset(
-                'assets/app_icon.png',
-                height: 200,
-                width: 150,
+      body: Container(
+        height: hp(100),
+        width: wp(100),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomRight,
+            colors: [
+              Color(0xff004D79),
+              Color(0xff051C3E),
+              Color(0xff051C3E),
+              Color(0xff701D5B),
+            ]
+          )
+        ),
+
+        child: ListView(
+          children: [
+            SizedBox(height:hp(10)),
+            Image.asset('assets/app_icon.png',height: 200,width: 150,),
+            SizedBox(height:hp(25)),
+            Container(
+              child: Column(
+                children: [
+                  _button("LOGIN"),
+                  SizedBox(height: 20,),
+                  _button("SIGN UP"),
+                ],
               ),
-              Container(
-                child: Column(
-                  children: [
-                    _button("LOGIN"),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    _button("SIGN UP"),
-                  ],
-                ),
-              )
-            ],
-          ),
+            ),
+            SizedBox(height:hp(2)),
+          ],
         ),
       ),
     );
