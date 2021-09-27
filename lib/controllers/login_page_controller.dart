@@ -17,7 +17,13 @@ class LoginPageController extends GetxController {
   void login(String email, String password) async {
 
     showProgressDialog();
+
+    /// login user and get user data
     UserData? userData = await authRepo.login(email, password);
+
+    /// save user data to local database
+
+
     Get.back();
 
   }

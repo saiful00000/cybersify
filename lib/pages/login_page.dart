@@ -15,7 +15,6 @@ class LoginPage extends StatelessWidget {
 
   LoginPageController _controller = Get.put(LoginPageController());
 
-
   String email = '';
   String password = '';
 
@@ -49,7 +48,11 @@ class LoginPage extends StatelessWidget {
                   Container(
                     height: hp(10),
                   ),
-                  Image.asset('assets/app_icon.png',height: wp(35),width: wp(35),),
+                  Image.asset(
+                    'assets/app_icon.png',
+                    height: wp(35),
+                    width: wp(35),
+                  ),
                   Container(
                     height: hp(5),
                   ),
@@ -82,16 +85,16 @@ class LoginPage extends StatelessWidget {
                       filled: true,
                       fillColor: Colors.white,
                     ),
-                    validator: (val){
-                      if(val?.isEmpty ?? true){
+                    validator: (val) {
+                      if (val?.isEmpty ?? true) {
                         return 'Enter your email';
                       }
-                      if(!GetUtils.isEmail(val??'')){
+                      if (!GetUtils.isEmail(val ?? '')) {
                         return 'Enter a valid email';
                       }
                       return null;
                     },
-                    onSaved: (val){
+                    onSaved: (val) {
                       email = val ?? '';
                     },
                   ),
@@ -115,17 +118,17 @@ class LoginPage extends StatelessWidget {
                       filled: true,
                       fillColor: Colors.white,
                     ),
-                    validator: (val){
-                      if(val == null){
+                    validator: (val) {
+                      if (val == null) {
                         return 'Enter password';
-                      }else if(val.isEmpty){
+                      } else if (val.isEmpty) {
                         return 'Enter your password';
-                      }else if(val.length < 4){
+                      } else if (val.length < 4) {
                         return 'Password must be more than 4 character';
                       }
                       return null;
                     },
-                    onSaved: (val){
+                    onSaved: (val) {
                       password = val ?? '';
                     },
                   ),
@@ -134,24 +137,24 @@ class LoginPage extends StatelessWidget {
                   ),
                   Container(
                     alignment: Alignment.centerRight,
-                    child: Text('having troubles Logging in?'),
+                    child: Text(
+                      'Forget Password?',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                   SizedBox(
                     height: hp(5),
                   ),
                   TextButton(
                     onPressed: () {
-
-                      if(_formKey.currentState?.validate() ?? false){
+                      if (_formKey.currentState?.validate() ?? false) {
                         _formKey.currentState?.save();
 
-                        if (email.isNotEmpty && password.isNotEmpty){
+                        if (email.isNotEmpty && password.isNotEmpty) {
                           _controller.login(email, password);
                           print('$email\n$password');
                         }
-
                       }
-
                     },
                     child: Container(
                       alignment: Alignment.center,
