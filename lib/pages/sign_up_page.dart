@@ -61,6 +61,7 @@ class SignUpPage extends StatelessWidget {
                     controller: signUpPageController.fullNameController,
                     focusNode: fullNameNode,
                     textAlign: TextAlign.center,
+                    keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                       hintText: 'Full Name',
                       hintStyle: TextStyle(color: Colors.grey,),
@@ -84,8 +85,9 @@ class SignUpPage extends StatelessWidget {
                     controller: signUpPageController.passController,
                     focusNode: phoneNode,
                     textAlign: TextAlign.center,
+                    keyboardType: TextInputType.phone,
                     decoration: InputDecoration(
-                      hintText: 'Phone nUmber',
+                      hintText: 'Phone number',
                       hintStyle: TextStyle(color: Colors.grey),
                       contentPadding: EdgeInsets.symmetric(horizontal: 16),
                       border: OutlineInputBorder(
@@ -108,6 +110,7 @@ class SignUpPage extends StatelessWidget {
                     controller: signUpPageController.emailController,
                     focusNode: emailNode,
                     textAlign: TextAlign.center,
+                    keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       hintText: 'Email Address',
                       hintStyle: TextStyle(color: Colors.grey),
@@ -133,6 +136,7 @@ class SignUpPage extends StatelessWidget {
                     controller: signUpPageController.passController,
                     focusNode: passwordNode,
                     textAlign: TextAlign.center,
+                    obscureText: true,
                     decoration: InputDecoration(
                       hintText: 'Password',
                       hintStyle: TextStyle(color: Colors.grey),
@@ -158,6 +162,7 @@ class SignUpPage extends StatelessWidget {
                     controller: signUpPageController.idNoController,
                     focusNode: nIdCardNode,
                     textAlign: TextAlign.center,
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       hintText: 'ID Card Number',
                       hintStyle: TextStyle(color: Colors.grey),

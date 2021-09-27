@@ -28,4 +28,30 @@ class AuthRepo {
     return null;
   }
 
+
+
+
+
+  Future<bool> register(String fullName, String phoneNum,String email,String pass,String idCard) async {
+    try{
+      Uri url = Uri.parse(ApiUrls.registerUrl(fullName, phoneNum, email, pass, idCard));
+
+      final response = await http.post(url);
+
+      print('response body = ${response.body}');
+
+      if (response.statusCode == 200){
+        var body = jsonDecode(response.body);
+        if (body['success'] == true){
+          return true;
+        }else return false;
+      }
+
+    }catch(err){
+      throw Exception(err);
+    }
+
+    return false;
+  }
+
 }
