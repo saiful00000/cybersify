@@ -1,16 +1,34 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class UserData {
-  late String token;
-  late String name;
-  late String email;
-  late String phone;
-  late String verificationStatus;
+   String token;
+   String name;
+   String email;
+   String phone;
+   String verificationStatus;
 
   UserData({
-    required this.token,
-    required this.name,
-    required this.email,
-    required this.phone,
-    required this.verificationStatus,
+     this.token,
+     this.name,
+     this.email,
+     this.phone,
+     this.verificationStatus,
   });
 
   UserData.fromJson(Map<String, dynamic> json) {

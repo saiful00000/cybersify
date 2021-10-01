@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginPageController extends GetxController {
-  late AuthRepo authRepo;
+   AuthRepo authRepo;
 
 
   @override
@@ -19,8 +19,11 @@ class LoginPageController extends GetxController {
     showProgressDialog();
 
     /// login user and get user data
-    UserData? userData = await authRepo.login(email, password);
+    UserData userData = await authRepo.login(email, password);
 
+    if((userData?.verificationStatus??'pending') == 'pending'){
+
+    }
     /// save user data to local database
 
 
