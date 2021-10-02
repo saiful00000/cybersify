@@ -7,4 +7,6 @@ class ApiUrls {
 
   static String registerUrl(String fullName, String phoneNum,String email,String pass,String idCard) =>
       '$baseUrl/api/register?name=$fullName&email=$email&password=$pass&c_password=$pass&phone=$phoneNum';
+
+  static String profileUrl = '$baseUrl/api/profile';
 }

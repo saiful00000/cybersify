@@ -21,19 +21,23 @@ class Database{
 
 
   Future<void> saveUserData(String userData) async {
+    print('storage data   '+userData);
     final storage = GetStorage(DatabaseKeys.db_name);
     await storage.write(DatabaseKeys.user_data, userData);
     await storage.save();
   }
 
-  Future<UserData> getUserData() async {
+ dynamic getUserData() async {
     try{
       final storage = GetStorage(DatabaseKeys.db_name);
       String data = storage.read(DatabaseKeys.user_data) ?? '';
+      print('get data'+data);
       if (data.isEmpty){
         return null;
       }
-      return UserData.fromJson(jsonDecode(data));
+      UserData userData = UserData.fromJson(jsonDecode(data));
+      print(jsonEncode(userData));
+      return jsonDecode(data);
     }catch(error){
       print('$error');
     }

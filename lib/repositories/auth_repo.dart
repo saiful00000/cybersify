@@ -1,7 +1,10 @@
 import 'dart:convert';
 
 import 'package:cybersify/constants/api_urls.dart';
+import 'package:cybersify/database/database.dart';
 import 'package:cybersify/models/user_data.dart';
+import 'package:cybersify/utils/alert_dialog.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class AuthRepo {
@@ -13,15 +16,24 @@ class AuthRepo {
       final response = await http.post(url);
 
       print('response body = ${response.body}');
-
+      var body = jsonDecode(response.body);
       if (response.statusCode == 200){
-        var body = jsonDecode(response.body);
         if (body['success'] == true){
+          Database.instance.saveUserData(response.body);
+          Get.back();
           return UserData.fromJson(body['data']);
+        }else{
+          Get.back();
+          alertDialog('Alert!', body['message']);
         }
+      }else{
+        Get.back();
+        alertDialog('Alert!', body['message']);
       }
 
     }catch(err){
+      Get.back();
+      alertDialog('Error!', 'Internal error occurred.');
       throw Exception(err);
     }
 
@@ -39,15 +51,25 @@ class AuthRepo {
       final response = await http.post(url);
 
       print('response body = ${response.body}');
-
+      var body = jsonDecode(response.body);
       if (response.statusCode == 200){
-        var body = jsonDecode(response.body);
         if (body['success'] == true){
           return true;
-        }else return false;
+        }else {
+          Get.back();
+          alertDialog('Alert!', body['message']);
+          return false;
+        }
+      }else{
+        print('yes false');
+        Get.back();
+        alertDialog('Alert!', body['message']);
+        return false;
       }
 
     }catch(err){
+      Get.back();
+      alertDialog('Error!', 'Internal error occurred.');
       throw Exception(err);
     }
 
