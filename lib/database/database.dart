@@ -26,7 +26,7 @@ class Database{
     await storage.save();
   }
 
-  Future<UserData?> getUserData() async {
+  Future<UserData> getUserData() async {
     try{
       final storage = GetStorage(DatabaseKeys.db_name);
       String data = storage.read(DatabaseKeys.user_data) ?? '';

@@ -130,7 +130,7 @@ class WithdrawScreen extends StatelessWidget {
                       fillColor: Colors.grey[100],
                     ),
                     validator: (v) {
-                      return v!.isEmpty ? 'Wallet Address required.' : null;
+                      return v.isEmpty ? 'Wallet Address required.' : null;
                     },
                   ),
                   SizedBox(
@@ -151,7 +151,7 @@ class WithdrawScreen extends StatelessWidget {
                       fillColor: Colors.grey[100],
                     ),
                     validator: (v) {
-                      return v!.isEmpty ? 'Amount required.' : null;
+                      return v.isEmpty ? 'Amount required.' : null;
                     },
                   ),
                   SizedBox(
@@ -173,7 +173,7 @@ class WithdrawScreen extends StatelessWidget {
                       fillColor: Colors.grey[100],
                     ),
                     validator: (v) {
-                      return v!.isEmpty ? 'Amount required.' : null;
+                      return v.isEmpty ? 'Amount required.' : null;
                     },
                   ),
                   SizedBox(

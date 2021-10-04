@@ -75,7 +75,7 @@ class SignUpPage extends StatelessWidget {
                       fillColor: Colors.white,
                     ),
                     validator: (v){
-                      return v!.isEmpty?'Full Name required.':null;
+                      return v.isEmpty?'Full Name required.':null;
                     },
                   ),
                   SizedBox(
@@ -99,7 +99,7 @@ class SignUpPage extends StatelessWidget {
                       fillColor: Colors.white,
                     ),
                     validator: (v){
-                      return v!.isEmpty?'Phone number required.':null;
+                      return v.isEmpty?'Phone number required.':null;
                     },
                   ),
 
@@ -124,7 +124,7 @@ class SignUpPage extends StatelessWidget {
                       fillColor: Colors.white,
                     ),
                     validator: (v){
-                      return v!.isEmpty?'Email Address required.':null;
+                      return v.isEmpty?'Email Address required.':null;
                     },
                   ),
 
@@ -150,7 +150,7 @@ class SignUpPage extends StatelessWidget {
                       fillColor: Colors.white,
                     ),
                     validator: (v){
-                      return v!.isEmpty?'Password required.':null;
+                      return v.isEmpty?'Password required.':null;
                     },
                   ),
 
@@ -176,7 +176,7 @@ class SignUpPage extends StatelessWidget {
                       fillColor: Colors.white,
                     ),
                     validator: (v){
-                      return v!.isEmpty?'ID Card Number required.':null;
+                      return v.isEmpty?'ID Card Number required.':null;
                     },
                   ),
 
@@ -192,7 +192,7 @@ class SignUpPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15),
                       child: InkWell(
                         onTap: (){
-                          if(signUpPageController.regFormKey.currentState!.validate()){
+                          if(signUpPageController.regFormKey.currentState.validate()){
                             signUpPageController.signUpOperation();
                           }
                         },

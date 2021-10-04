@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 class AuthRepo {
 
-  Future<UserData?> login(String email, String password) async {
+  Future<UserData> login(String email, String password) async {
     try{
       Uri url = Uri.parse(ApiUrls.loginUrl(email, password));
 
