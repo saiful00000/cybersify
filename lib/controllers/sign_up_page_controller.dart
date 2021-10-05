@@ -1,5 +1,6 @@
 import 'package:cybersify/pages/login_page.dart';
 import 'package:cybersify/repositories/auth_repo.dart';
+import 'package:cybersify/utils/ProgressDialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -27,7 +28,7 @@ class SignUpPageController extends GetxController{
   }
 
   void signUpOperation() async{
-    showProgressDialog();
+    showProgressDialog('Sign Up');
     bool registerStatus = await authRepo.register(
     fullNameController.text,
     phoneNumController.text,
@@ -35,33 +36,7 @@ class SignUpPageController extends GetxController{
     passController.text,
     idNoController.text);
 
-    Get.back();
+    if(registerStatus) Get.back();
     if(registerStatus) Get.offAll(()=>LoginPage(),transition: Transition.cupertino);
-  }
-
-
-
-  void showProgressDialog() {
-    Get.dialog(
-      Dialog(
-        backgroundColor: Colors.transparent,
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CircularProgressIndicator(),
-              SizedBox(
-                height: 16,
-              ),
-              Text(
-                'Login in progress...',
-                style: TextStyle(color: Colors.white),
-              ),
-            ],
-          ),
-        ),
-      ),
-      barrierDismissible: false,
-    );
   }
 }

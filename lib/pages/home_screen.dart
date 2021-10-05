@@ -1,3 +1,8 @@
+import 'dart:convert';
+
+import 'package:cybersify/controllers/home_screen_controller.dart';
+import 'package:cybersify/database/database.dart';
+import 'package:cybersify/models/user_data.dart';
 import 'package:cybersify/pages/vendor_list_screnn.dart';
 import 'package:cybersify/pages/withdraw_screen.dart';
 import 'package:cybersify/utils/screen.dart';
@@ -6,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
+  HomeScreenController _controller = Get.put(HomeScreenController());
   Function wp = () {};
   Function hp = () {};
 
@@ -34,51 +40,52 @@ class HomeScreen extends StatelessWidget {
                         ])),
 
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      width: wp(100),
-                      alignment: Alignment.centerLeft,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(100),
-                        child: Image.asset('assets/dummy_image.png',height: 50,width: 50,),
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        width: wp(100),
+                        alignment: Alignment.centerLeft,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(100),
+                          child: Image.asset('assets/dummy_image.png',height: 50,width: 50,),
+                        ),
                       ),
-                    ),
 
 
-                    Text("Balance",
-                    style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold
-                    ),),
-
-                    SizedBox(height: 20,),
-                    Text("10,714.25 MRG",
+                      Text("Balance",
                       style: TextStyle(
-                          fontSize: 35,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold
-                      ),),
-                    SizedBox(height: 15,),
-
-
-                    Text("= 2892.20 USD",
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold
+                        fontSize: 25,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold
                       ),),
 
-                    SizedBox(height: 10,),
+                      SizedBox(height: 20,),
+                      Obx(()=>Text("${_controller.profileData.value.profile.balance??'0'} MRG",
+                          style: TextStyle(
+                              fontSize: 35,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold
+                          ),),
+                      ),
+                      SizedBox(height: 15,),
 
-                    Container(
-                      width: wp(100),
-                      child: Image.asset('assets/cover.png',fit: BoxFit.fitWidth,),
-                    )
-                  ],
-                ),
+
+                      Text("= 2892.20 USD",
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold
+                        ),),
+
+                      SizedBox(height: 10,),
+
+                      Container(
+                        width: wp(100),
+                        child: Image.asset('assets/cover.png',fit: BoxFit.fitWidth,),
+                      )
+                    ],
+                  ),
               ),
 
               Container(
@@ -268,7 +275,7 @@ class HomeScreen extends StatelessWidget {
           padding: EdgeInsets.only(top: 30),
           child: FloatingActionButton(
             backgroundColor: Colors.white,
-            onPressed: (){
+            onPressed: ()async{
               Get.to(()=>VendorListScreen());
             },
             child: Padding(
