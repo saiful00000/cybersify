@@ -25,6 +25,10 @@ class LoginPageController extends GetxController {
     UserData userData = await authRepo.login(email, password);
 
 
+    Get.back();
+    Get.to(()=>HomeScreen());
+    return;
+
     if((userData?.verificationStatus??'pending') == 'pending'){
       Get.back();
       Get.to(()=>PassbaseVerificationScreen());

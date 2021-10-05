@@ -1,5 +1,6 @@
 import 'package:cybersify/database/database.dart';
 import 'package:cybersify/pages/home_screen.dart';
+import 'package:cybersify/pages/login_page.dart';
 import 'package:cybersify/pages/pass_base_verification_scree.dart';
 import 'package:cybersify/pages/splash_screen.dart';
 import 'package:cybersify/pages/verify_screen.dart';
@@ -54,7 +55,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xFFE5E6E7),
 
       ),
-      home: /*SignUpPage()*/SplashScreen()/*VerifyScreen()*//*HomeScreen()*//*PassbaseVerificationScreen()*/,
+      home: /*SignUpPage()*//*SplashScreen()*//*VerifyScreen()*//*HomeScreen()*//*PassbaseVerificationScreen()*/LoginPage(),
     );
   }
 }
