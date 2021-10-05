@@ -1,12 +1,17 @@
 import 'package:cybersify/database/database.dart';
+import 'package:cybersify/pages/home_screen.dart';
+import 'package:cybersify/pages/pass_base_verification_scree.dart';
 import 'package:cybersify/pages/splash_screen.dart';
 import 'package:cybersify/pages/verify_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:passbase_flutter/passbase_flutter.dart';
 
 void main() async {
   await GetStorage.init(DatabaseKeys.db_name);
+  PassbaseSDK.prefillUserEmail = "testuser@mail.com";
+  PassbaseSDK.initialize(publishableApiKey: "VYNGOZbX0eQFxfL8xWObIsKfvjpzOdbcxzBNZvbcddlwbLIQJRsP01scWLRvErv1");
 
   runApp(MyApp());
 }
@@ -21,24 +26,34 @@ class MyApp extends StatelessWidget {
         primaryColor:  Color(0xff051C3E),
         fontFamily: 'Bahnschrift',
         accentColor: Colors.blueAccent,
+        textSelectionTheme: TextSelectionThemeData(
+          selectionHandleColor: Colors.transparent,
+        ),
+        textTheme: TextTheme(
+          bodyText2: TextStyle(
+            color: Color(0xff051C3E),
+          ),
+        ),
+
         colorScheme: ColorScheme(
-          secondary: Colors.blueAccent,
+
+          secondary: Color(0xff051C3E),
           background: Colors.white,
           brightness: Brightness.light,
           error: Colors.red,
           onBackground: Colors.white,
-          primary: Colors.blue,
+          primary: Color(0xff051C3E),
           onError: Colors.red,
-          onPrimary: Colors.blue,
-          onSecondary: Colors.blueAccent,
+          onPrimary: Color(0xff051C3E),
+          onSecondary: Color(0xff051C3E),
           surface: Colors.white,
           onSurface: Colors.white,
-          primaryVariant: Colors.blue,
-          secondaryVariant: Colors.blueAccent,
+          primaryVariant: Color(0xff051C3E),
+          secondaryVariant: Color(0xff051C3E),
         ),
         scaffoldBackgroundColor: Color(0xFFE5E6E7),
       ),
-      home: /*SignUpPage()*/SplashScreen()/*VerifyScreen()*/,
+      home: /*SignUpPage()*/SplashScreen()/*VerifyScreen()*//*HomeScreen()*//*PassbaseVerificationScreen()*/,
     );
   }
 }

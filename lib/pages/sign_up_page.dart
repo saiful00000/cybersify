@@ -7,11 +7,11 @@ class SignUpPage extends StatelessWidget {
   Function wp = () {};
   Function hp = () {};
 
-  FocusNode fullNameNode = FocusNode();
+/*  FocusNode fullNameNode = FocusNode();
   FocusNode phoneNode = FocusNode();
   FocusNode emailNode = FocusNode();
   FocusNode passwordNode = FocusNode();
-  FocusNode nIdCardNode = FocusNode();
+  FocusNode nIdCardNode = FocusNode();*/
   SignUpPageController signUpPageController = Get.put(SignUpPageController());
 
   @override
@@ -59,7 +59,6 @@ class SignUpPage extends StatelessWidget {
 
                   TextFormField(
                     controller: signUpPageController.fullNameController,
-                    focusNode: fullNameNode,
                     textAlign: TextAlign.center,
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
@@ -82,8 +81,7 @@ class SignUpPage extends StatelessWidget {
                     height: hp(2),
                   ),
                   TextFormField(
-                    controller: signUpPageController.passController,
-                    focusNode: phoneNode,
+                    controller: signUpPageController.phoneNumController,
                     textAlign: TextAlign.center,
                     keyboardType: TextInputType.phone,
                     decoration: InputDecoration(
@@ -108,7 +106,6 @@ class SignUpPage extends StatelessWidget {
                   ),
                   TextFormField(
                     controller: signUpPageController.emailController,
-                    focusNode: emailNode,
                     textAlign: TextAlign.center,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
@@ -134,7 +131,6 @@ class SignUpPage extends StatelessWidget {
 
                   TextFormField(
                     controller: signUpPageController.passController,
-                    focusNode: passwordNode,
                     textAlign: TextAlign.center,
                     obscureText: true,
                     decoration: InputDecoration(
@@ -160,7 +156,6 @@ class SignUpPage extends StatelessWidget {
 
                   TextFormField(
                     controller: signUpPageController.idNoController,
-                    focusNode: nIdCardNode,
                     textAlign: TextAlign.center,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(

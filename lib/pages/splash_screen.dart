@@ -85,7 +85,7 @@ class SplashScreen extends StatelessWidget {
   }
 
   Future<void> _checkuserLoginState() async {
-    UserData userData = await Database.instance.getUserData();
+    dynamic userData = await Database.instance.getUserData();
     if(userData != null){
       //Get.offAll();
     }
