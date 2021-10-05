@@ -27,8 +27,8 @@ class LoginPageController extends GetxController {
 
     if((userData?.verificationStatus??'pending') == 'pending'){
       Get.back();
-      //Get.to(()=>PassbaseVerificationScreen());
-      Get.to(()=>HomeScreen());
+      Get.to(()=>PassbaseVerificationScreen());
+      //Get.to(()=>HomeScreen());
     }else{
       Get.back();
       Get.to(()=>HomeScreen());
