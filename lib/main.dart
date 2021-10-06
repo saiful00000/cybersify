@@ -55,7 +55,9 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xFFE5E6E7),
 
       ),
-      home: /*SignUpPage()*//*SplashScreen()*//*VerifyScreen()*//*HomeScreen()*//*PassbaseVerificationScreen()*/LoginPage(),
+      home: /*SignUpPage()*//*SplashScreen()*//*VerifyScreen()*//*HomeScreen()*//*PassbaseVerificationScreen()*//*LoginPage()*/HomeScreen(),
     );
   }
 }
+
+//hasib.0951@gmail.com

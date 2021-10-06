@@ -110,69 +110,21 @@ class HomeScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          InkWell(
+                          _cardItem(
+                            title: 'Withdraw',
+                            image: 'assets/cash_withdraw.png',
                             onTap: () {
                               Get.to(() => WithdrawScreen(),
                                   transition: Transition.cupertino);
                             },
-                            child: Card(
-                              elevation: 5,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                              child: Container(
-                                constraints: BoxConstraints(
-                                    minHeight: 100, minWidth: 100),
-                                padding: EdgeInsets.all(5),
-                                child: Column(
-                                  children: [
-                                    Image.asset(
-                                      'assets/cash_withdraw.png',
-                                      height: 60,
-                                      width: 60,
-                                    ),
-                                    SizedBox(
-                                      height: 2,
-                                    ),
-                                    Text(
-                                      'Withdraw',
-                                      style: TextStyle(fontSize: 15),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
                           ),
-                          InkWell(
-                            onTap: () {},
-                            child: Card(
-                              elevation: 5,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                              child: Container(
-                                constraints: BoxConstraints(
-                                    minHeight: 100, minWidth: 100),
-                                padding: EdgeInsets.all(5),
-                                child: Column(
-                                  children: [
-                                    Image.asset(
-                                      'assets/ticket.png',
-                                      height: 60,
-                                      width: 60,
-                                    ),
-                                    SizedBox(
-                                      height: 2,
-                                    ),
-                                    Text(
-                                      'Withdraw',
-                                      style: TextStyle(fontSize: 15),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          )
+                          _cardItem(
+                            title: 'Buy Voucher',
+                            image: 'assets/ticket.png',
+                            onTap: () {
+
+                            },
+                          ),
                         ],
                       ),
                     ),
@@ -181,66 +133,19 @@ class HomeScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          InkWell(
-                            onTap: () {},
-                            child: Card(
-                              elevation: 5,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                              child: Container(
-                                constraints: BoxConstraints(
-                                    minHeight: 100, minWidth: 100),
-                                padding: EdgeInsets.all(5),
-                                child: Column(
-                                  children: [
-                                    Image.asset(
-                                      'assets/transaction.png',
-                                      height: 60,
-                                      width: 60,
-                                    ),
-                                    SizedBox(
-                                      height: 2,
-                                    ),
-                                    Text(
-                                      'Withdraw',
-                                      style: TextStyle(fontSize: 15),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
+                          _cardItem(
+                            title: 'Transaction',
+                            image: 'assets/transaction.png',
+                            onTap: () {
+
+                            },
                           ),
-                          InkWell(
+
+                          _cardItem(
+                            title: 'Customer\nSupport',
+                            image: 'assets/customer_sup.png',
                             onTap: () {},
-                            child: Card(
-                              elevation: 5,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                              child: Container(
-                                constraints: BoxConstraints(
-                                    minHeight: 100, minWidth: 100),
-                                padding: EdgeInsets.all(5),
-                                child: Column(
-                                  children: [
-                                    Image.asset(
-                                      'assets/customer_sup.png',
-                                      height: 60,
-                                      width: 60,
-                                    ),
-                                    SizedBox(
-                                      height: 2,
-                                    ),
-                                    Text(
-                                      'Withdraw',
-                                      style: TextStyle(fontSize: 15),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          )
+                          ),
                         ],
                       ),
                     )
@@ -320,6 +225,44 @@ class HomeScreen extends StatelessWidget {
           child: Text(
             s,
             style: TextStyle(fontSize: 18),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _cardItem(
+      {@required String title,
+      @required String image,
+      @required Function onTap}) {
+    return InkWell(
+      onTap: () {
+        onTap();
+      },
+      child: Card(
+        elevation: 5,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        child: Container(
+          constraints: BoxConstraints(minHeight: 100, minWidth: 100),
+          padding: EdgeInsets.all(5),
+          child: Column(
+            children: [
+              Image.asset(
+                '$image',
+                height: 60,
+                width: 60,
+              ),
+              SizedBox(
+                height: 4,
+              ),
+              Text(
+                '$title',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 12),
+              )
+            ],
           ),
         ),
       ),
