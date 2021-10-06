@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:cybersify/controllers/home_screen_controller.dart';
 import 'package:cybersify/database/database.dart';
 import 'package:cybersify/models/user_data.dart';
+import 'package:cybersify/pages/activity_list_screen.dart';
 import 'package:cybersify/pages/vendor_list_screnn.dart';
 import 'package:cybersify/pages/withdraw_screen.dart';
 import 'package:cybersify/utils/screen.dart';
@@ -171,7 +172,9 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   IconButton(
                       padding: EdgeInsets.all(0),
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(() => ActivityListScreen());
+                      },
                       icon: Icon(
                         Icons.notifications,
                         size: 50,
