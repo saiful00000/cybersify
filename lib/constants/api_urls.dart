@@ -9,4 +9,8 @@ class ApiUrls {
       '$baseUrl/api/register?name=$fullName&email=$email&password=$pass&c_password=$pass&phone=$phoneNum';
 
   static String profileUrl = '$baseUrl/api/profile';
+
+
+  static String vendorListUrl = '$baseUrl/api/vendor-list';
+
 }
