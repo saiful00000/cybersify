@@ -4,6 +4,7 @@ import 'package:cybersify/controllers/home_screen_controller.dart';
 import 'package:cybersify/database/database.dart';
 import 'package:cybersify/models/user_data.dart';
 import 'package:cybersify/pages/activity_list_screen.dart';
+import 'package:cybersify/pages/profile_screen.dart';
 import 'package:cybersify/pages/vendor_list_screnn.dart';
 import 'package:cybersify/pages/withdraw_screen.dart';
 import 'package:cybersify/utils/screen.dart';
@@ -122,9 +123,7 @@ class HomeScreen extends StatelessWidget {
                           _cardItem(
                             title: 'Buy Voucher',
                             image: 'assets/ticket.png',
-                            onTap: () {
-
-                            },
+                            onTap: () {},
                           ),
                         ],
                       ),
@@ -137,11 +136,8 @@ class HomeScreen extends StatelessWidget {
                           _cardItem(
                             title: 'Transaction',
                             image: 'assets/transaction.png',
-                            onTap: () {
-
-                            },
+                            onTap: () {},
                           ),
-
                           _cardItem(
                             title: 'Customer\nSupport',
                             image: 'assets/customer_sup.png',
@@ -181,13 +177,16 @@ class HomeScreen extends StatelessWidget {
                         color: Color(0xff051C3E),
                       )),
                   IconButton(
-                      padding: EdgeInsets.all(0),
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.person,
-                        size: 50,
-                        color: Color(0xff051C3E),
-                      ))
+                    padding: EdgeInsets.all(0),
+                    onPressed: () {
+                      Get.to(() => ProfileScreen());
+                    },
+                    icon: Icon(
+                      Icons.person,
+                      size: 50,
+                      color: Color(0xff051C3E),
+                    ),
+                  ),
                 ],
               ),
             ),

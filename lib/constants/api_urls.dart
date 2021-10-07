@@ -13,5 +13,6 @@ class ApiUrls {
 
   static String vendorListUrl = '$baseUrl/api/vendor-list';
   static String activityListUrl = '$baseUrl/api/activity';
+  static String getProfileUrl = '$baseUrl/api/profile';
 
 }
