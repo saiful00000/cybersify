@@ -37,7 +37,6 @@ class MyApp extends StatelessWidget {
         ),
 
         colorScheme: ColorScheme(
-
           secondary: Color(0xff051C3E),
           background: Colors.white,
           brightness: Brightness.light,
