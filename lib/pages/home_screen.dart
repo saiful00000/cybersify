@@ -124,7 +124,9 @@ class HomeScreen extends StatelessWidget {
                             _cardItem(
                               title: 'Buy Voucher',
                               image: 'assets/ticket.png',
-                              onTap: () {},
+                              onTap: () {
+                                Get.to(() => VendorListScreen());
+                              },
                             ),
                           ],
                         ),
@@ -219,7 +221,7 @@ class HomeScreen extends StatelessWidget {
         if (s == 'Send MRG') {
           Get.to(()=>SendMRGScreen());
         } else if (s == 'Redeem Voucher') {
-          Get.to(() => VendorListScreen());
+
         }
       },
       child: Card(

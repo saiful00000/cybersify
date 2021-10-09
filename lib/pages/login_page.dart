@@ -1,4 +1,5 @@
 import 'package:cybersify/controllers/login_page_controller.dart';
+import 'package:cybersify/pages/forgot_pass_screen.dart';
 import 'package:cybersify/utils/screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -66,14 +67,11 @@ class LoginPage extends StatelessWidget {
                     ),
                   )),
                   SizedBox(
-                    height: hp(5),
-                  ),
-                  Text('Email/Phone'),
-                  SizedBox(
-                    height: 8,
+                    height: 15,
                   ),
                   TextFormField(
-                    focusNode: emailNode,
+                    textAlign: TextAlign.center,
+                    keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                       hintText: 'Enter email or phone number',
                       hintStyle: TextStyle(color: Colors.grey),
@@ -82,6 +80,7 @@ class LoginPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                         borderSide: BorderSide.none,
                       ),
+                      prefixIcon: Icon(Icons.email),
                       filled: true,
                       fillColor: Colors.white,
                     ),
@@ -101,12 +100,13 @@ class LoginPage extends StatelessWidget {
                   SizedBox(
                     height: hp(3),
                   ),
-                  Text('Password'),
                   SizedBox(
                     height: 8,
                   ),
                   TextFormField(
-                    focusNode: passwordNode,
+                    textAlign: TextAlign.center,
+                    keyboardType: TextInputType.text,
+                    obscureText: true,
                     decoration: InputDecoration(
                       hintText: 'Enter password',
                       hintStyle: TextStyle(color: Colors.grey),
@@ -115,6 +115,7 @@ class LoginPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                         borderSide: BorderSide.none,
                       ),
+                      prefixIcon: Icon(Icons.vpn_key),
                       filled: true,
                       fillColor: Colors.white,
                     ),
@@ -135,11 +136,16 @@ class LoginPage extends StatelessWidget {
                   SizedBox(
                     height: hp(2),
                   ),
-                  Container(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      'Forget Password?',
-                      style: TextStyle(color: Colors.white),
+                  InkWell(
+                    onTap: (){
+                      Get.to(()=>ForgetPassScreen());
+                    },
+                    child: Container(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        'Forget Password?',
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                   ),
                   SizedBox(
