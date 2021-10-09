@@ -23,4 +23,6 @@ class ApiUrls {
   static String reDeemVoucher = '$baseUrl/redeem-voucher';
   static String changePassword = '$baseUrl/api/change-password';
 
+  static String resetPasswordUrl () => '$baseUrl/api/forget-password';
+
 }
