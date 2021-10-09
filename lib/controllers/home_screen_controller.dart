@@ -4,6 +4,7 @@ import 'package:cybersify/constants/api_urls.dart';
 import 'package:cybersify/database/database.dart';
 import 'package:cybersify/models/profile_data.dart';
 import 'package:cybersify/models/user_data.dart';
+import 'package:cybersify/pages/splash_screen.dart';
 import 'package:cybersify/repositories/home_repo.dart';
 import 'package:cybersify/utils/ProgressDialog.dart';
 import 'package:cybersify/utils/alert_dialog.dart';
@@ -38,6 +39,8 @@ class HomeScreenController extends GetxController{
         Database.instance.saveProfileData(response.body);
         profileData.value = ProfileData.fromJson(body);
         isLoading.value = false;
+      }else if(response.statusCode == 401){
+        Get.offAll(()=>SplashScreen());
       }else{
         isLoading.value = false;
         Get.back();

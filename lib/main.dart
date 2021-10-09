@@ -11,7 +11,7 @@ import 'package:passbase_flutter/passbase_flutter.dart';
 
 void main() async {
   await GetStorage.init(DatabaseKeys.db_name);
-  PassbaseSDK.prefillUserEmail = "testuser@mail.com";
+  PassbaseSDK.prefillUserEmail = "hasib2@xkx.me";
   PassbaseSDK.initialize(publishableApiKey: "cXR0ynShp46OvwTFEL1KHjvleyzQWpXjsx2ryrIiB27LFbLdLw54pGw0ck9Ciqeq");
 
   runApp(MyApp());
@@ -56,6 +56,15 @@ class MyApp extends StatelessWidget {
       ),
       home: /*SignUpPage()*/SplashScreen()/*VerifyScreen()*//*HomeScreen()*//*PassbaseVerificationScreen()*//*LoginPage()*//*HomeScreen()*/,
     );
+  }
+
+  _checkuserLoginState() async {
+    dynamic userData = await Database.instance.getUserData();
+    if(userData != null){
+      Get.offAll(()=>HomeScreen());
+    }else{
+      Get.offAll(()=>SplashScreen());
+    }
   }
 }
 
