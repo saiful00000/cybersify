@@ -1,5 +1,8 @@
+import 'package:cybersify/pages/home_screen.dart';
+import 'package:cybersify/utils/alert_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:passbase_flutter/passbase_flutter.dart';
 
 class PassbaseVerificationScreen extends StatelessWidget {
@@ -50,16 +53,13 @@ class PassbaseVerificationScreen extends StatelessWidget {
               padding: EdgeInsets.only(bottom: 70),
               child: PassbaseButton(
                 onFinish: (identityAccessKey) {
-                  // do stuff in case of success
-                  print(identityAccessKey);
+                  Get.to(()=>HomeScreen());
                 },
                 onError: (errorCode) {
-                  // do stuff in case of cancel
-                  print(errorCode);
+                  alertDialog('Error!', 'Error occurred to verify via passbase. Please try again later.');
                 },
                 onStart: () {
-                  // do stuff in case of start
-                  print("start");
+                  //
                 },
                 width: 300,
                 height: 60,

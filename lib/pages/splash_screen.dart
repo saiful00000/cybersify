@@ -1,5 +1,6 @@
 import 'package:cybersify/database/database.dart';
 import 'package:cybersify/models/user_data.dart';
+import 'package:cybersify/pages/home_screen.dart';
 import 'package:cybersify/pages/login_page.dart';
 import 'package:cybersify/pages/sign_up_page.dart';
 import 'package:cybersify/utils/screen.dart';
@@ -15,8 +16,6 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     wp = Screen(MediaQuery.of(context).size).wp;
     hp = Screen(MediaQuery.of(context).size).hp;
-    
-    _checkuserLoginState();
     
     return Scaffold(
       body: Container(
@@ -82,12 +81,5 @@ class SplashScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Future<void> _checkuserLoginState() async {
-    dynamic userData = await Database.instance.getUserData();
-    if(userData != null){
-      //Get.offAll();
-    }
   }
 }
