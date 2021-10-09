@@ -6,8 +6,8 @@ class VendorScreenController extends GetxController{
   VendorListRepo _repo = VendorListRepo();
 
 
-  RxList<VendorDataModel> vendorList = <VendorDataModel>[].obs;
-  RxBool apiLoading = false.obs;
+  List<VendorDataModel> vendorList = <VendorDataModel>[];
+  bool apiLoading = false;
 
   @override
   void onInit() {
@@ -16,9 +16,10 @@ class VendorScreenController extends GetxController{
   }
 
   void _getVendorList() async {
-    apiLoading.value = true;
-    vendorList.value = await _repo.getVendorList();
-    apiLoading.value = false;
+    apiLoading = true;
+    vendorList = await _repo.getVendorList();
+    apiLoading = false;
+    update();
   }
 
 }

@@ -12,7 +12,7 @@ import 'package:passbase_flutter/passbase_flutter.dart';
 void main() async {
   await GetStorage.init(DatabaseKeys.db_name);
   PassbaseSDK.prefillUserEmail = "testuser@mail.com";
-  PassbaseSDK.initialize(publishableApiKey: "VYNGOZbX0eQFxfL8xWObIsKfvjpzOdbcxzBNZvbcddlwbLIQJRsP01scWLRvErv1");
+  PassbaseSDK.initialize(publishableApiKey: "cXR0ynShp46OvwTFEL1KHjvleyzQWpXjsx2ryrIiB27LFbLdLw54pGw0ck9Ciqeq");
 
   runApp(MyApp());
 }
@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xFFE5E6E7),
 
       ),
-      home: /*SignUpPage()*//*SplashScreen()*//*VerifyScreen()*//*HomeScreen()*//*PassbaseVerificationScreen()*//*LoginPage()*/HomeScreen(),
+      home: /*SignUpPage()*/SplashScreen()/*VerifyScreen()*//*HomeScreen()*//*PassbaseVerificationScreen()*//*LoginPage()*//*HomeScreen()*/,
     );
   }
 }

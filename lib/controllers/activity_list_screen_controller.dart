@@ -6,19 +6,21 @@ class ActivityListScreenController extends GetxController{
   ActivityListRepo _repo = ActivityListRepo();
 
 
-  RxList<ActivityDataModel> activityList = <ActivityDataModel>[].obs;
-  RxBool apiLoading = false.obs;
+  List<ActivityDataModel> activityList = <ActivityDataModel>[];
+  bool apiLoading = false;
 
   @override
   void onInit() {
-    _getActivityList();
     super.onInit();
+    _getActivityList();
   }
 
   void _getActivityList() async {
-    apiLoading.value = true;
-    activityList.value = await _repo.getVendorList();
-    apiLoading.value = false;
+    apiLoading = true;
+    activityList.clear();
+    activityList.addAll(await _repo.getVendorList());
+    apiLoading = false;
+    update();
   }
 
 }

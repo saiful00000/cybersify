@@ -6,6 +6,7 @@ import 'package:get_storage/get_storage.dart';
 class DatabaseKeys{
   static const db_name = 'cybercify_db';
   static const user_data = 'user_data';
+  static const profile_data = 'profile_data';
 }
 
 
@@ -38,6 +39,29 @@ class Database{
       UserData userData = UserData.fromJson(jsonDecode(data));
       print(jsonEncode(userData));
       return jsonDecode(data);
+    }catch(error){
+      print('$error');
+    }
+
+    return null;
+  }
+
+  Future<void> saveProfileData(String profileData) async {
+    final storage = GetStorage(DatabaseKeys.db_name);
+    await storage.write(DatabaseKeys.profile_data, profileData);
+    await storage.save();
+  }
+
+
+  Future<String> getProfile() async {
+    try{
+      final storage = GetStorage(DatabaseKeys.db_name);
+      String data = storage.read(DatabaseKeys.profile_data) ?? '';
+      if (data.isEmpty){
+        return null;
+      }
+      print("profile data"+data);
+      return data;
     }catch(error){
       print('$error');
     }

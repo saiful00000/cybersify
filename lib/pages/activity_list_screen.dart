@@ -83,8 +83,9 @@ class ActivityListScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 16,),
-              Obx(() {
-                if (_controller.apiLoading.value) {
+
+              GetBuilder<ActivityListScreenController>(builder: (controller){
+                if (_controller.apiLoading) {
                   return Center(
                     child: CupertinoActivityIndicator(),
                   );
@@ -94,12 +95,12 @@ class ActivityListScreen extends StatelessWidget {
                   );
                 }
                 return ListView.builder(
-                  itemCount: _controller.activityList.length,
+                  itemCount: /*_controller.activityList.length*/2,
                   shrinkWrap: true,
                   physics: BouncingScrollPhysics(),
                   itemBuilder: (context, index) {
                     ActivityDataModel activity =
-                        _controller.activityList[index];
+                    _controller.activityList[index];
                     return Card(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25),
@@ -131,7 +132,7 @@ class ActivityListScreen extends StatelessWidget {
                     );
                   },
                 );
-              }),
+              })
             ],
           ),
         ),

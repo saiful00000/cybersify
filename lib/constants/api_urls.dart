@@ -8,6 +8,12 @@ class ApiUrls {
   static String registerUrl(String fullName, String phoneNum,String email,String pass,String idCard) =>
       '$baseUrl/api/register?name=$fullName&email=$email&password=$pass&c_password=$pass&phone=$phoneNum';
 
+  static String withdrawUrl(String bankDetails, String amount) =>
+      '$baseUrl/api/withdraw?amount=$amount&details=$bankDetails';
+
+  static String sendMRGUrl(String walletId, String amount,String pass) =>
+      '$baseUrl/api/transfer?amount=$amount&wallet=$walletId&password=$pass';
+
   static String profileUrl = '$baseUrl/api/profile';
 
 

@@ -5,6 +5,7 @@ import 'package:cybersify/database/database.dart';
 import 'package:cybersify/models/user_data.dart';
 import 'package:cybersify/pages/activity_list_screen.dart';
 import 'package:cybersify/pages/profile_screen.dart';
+import 'package:cybersify/pages/send_mrg_screen.dart';
 import 'package:cybersify/pages/vendor_list_screnn.dart';
 import 'package:cybersify/pages/withdraw_screen.dart';
 import 'package:cybersify/utils/screen.dart';
@@ -24,132 +25,137 @@ class HomeScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                width: wp(100),
-                constraints: BoxConstraints(minHeight: 250),
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomRight,
-                        colors: [
-                      Color(0xff004D79),
-                      Color(0xff051C3E),
-                    ])),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      width: wp(100),
-                      alignment: Alignment.centerLeft,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(100),
-                        child: Image.asset(
-                          'assets/dummy_image.png',
-                          height: 50,
-                          width: 50,
+        body: Obx(()=>_controller.isLoading.value?CupertinoActivityIndicator():SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  width: wp(100),
+                  constraints: BoxConstraints(minHeight: 250),
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomRight,
+                          colors: [
+                        Color(0xff004D79),
+                        Color(0xff051C3E),
+                      ])),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        width: wp(100),
+                        alignment: Alignment.centerLeft,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(100),
+                          child: Image.asset(
+                            'assets/dummy_image.png',
+                            height: 50,
+                            width: 50,
+                          ),
                         ),
                       ),
-                    ),
-                    Text(
-                      "Balance",
-                      style: TextStyle(
-                          fontSize: 25,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Obx(
-                      () => Text(
-                        "${_controller.profileData?.value?.profile?.balance ?? '0'} MRG",
+                      Text(
+                        "Balance",
                         style: TextStyle(
-                            fontSize: 35,
+                            fontSize: 25,
                             color: Colors.white,
                             fontWeight: FontWeight.bold),
                       ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      "= 2892.20 USD",
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      width: wp(100),
-                      child: Image.asset(
-                        'assets/cover.png',
-                        fit: BoxFit.fitWidth,
+                      SizedBox(
+                        height: 20,
                       ),
-                    )
-                  ],
+                      Obx(
+                        () => Text(
+                          "${_controller.profileData?.value?.profile?.balance ?? '0'} MRG",
+                          style: TextStyle(
+                              fontSize: 35,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        "= 2892.20 USD",
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        width: wp(100),
+                        child: Image.asset(
+                          'assets/cover.png',
+                          fit: BoxFit.fitWidth,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              Container(
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 20,
-                    ),
-                    _wideButton("Send MRG"),
-                    _wideButton("Redeem Voucher"),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 40, right: 40),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          _cardItem(
-                            title: 'Withdraw',
-                            image: 'assets/cash_withdraw.png',
-                            onTap: () {
-                              Get.to(() => WithdrawScreen(),
-                                  transition: Transition.cupertino);
-                            },
-                          ),
-                          _cardItem(
-                            title: 'Buy Voucher',
-                            image: 'assets/ticket.png',
-                            onTap: () {},
-                          ),
-                        ],
+                Container(
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 20,
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 40, right: 40),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          _cardItem(
-                            title: 'Transaction',
-                            image: 'assets/transaction.png',
-                            onTap: () {},
-                          ),
-                          _cardItem(
-                            title: 'Customer\nSupport',
-                            image: 'assets/customer_sup.png',
-                            onTap: () {},
-                          ),
-                        ],
+                      _wideButton("Send MRG"),
+                      _wideButton("Redeem Voucher"),
+                      SizedBox(
+                        height: 20,
                       ),
-                    )
-                  ],
-                ),
-              )
-            ],
+                      Container(
+                        margin: EdgeInsets.only(left: 40, right: 40),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            _cardItem(
+                              title: 'Withdraw',
+                              image: 'assets/cash_withdraw.png',
+                              onTap: () {
+                                Get.to(() => WithdrawScreen(),
+                                    transition: Transition.cupertino);
+                              },
+                            ),
+                            _cardItem(
+                              title: 'Buy Voucher',
+                              image: 'assets/ticket.png',
+                              onTap: () {
+                                Get.to(() => VendorListScreen());
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 40, right: 40),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            _cardItem(
+                              title: 'Transaction',
+                              image: 'assets/transaction.png',
+                              onTap: () {
+                                Get.to(()=>ActivityListScreen());
+                              },
+                            ),
+                            _cardItem(
+                              title: 'Customer\nSupport',
+                              image: 'assets/customer_sup.png',
+                              onTap: () {},
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
         bottomNavigationBar: Padding(
@@ -198,7 +204,7 @@ class HomeScreen extends StatelessWidget {
           child: FloatingActionButton(
             backgroundColor: Colors.white,
             onPressed: () async {
-              Get.to(() => VendorListScreen());
+
             },
             child: Padding(
                 padding: EdgeInsets.all(5),
@@ -213,7 +219,10 @@ class HomeScreen extends StatelessWidget {
     return InkWell(
       onTap: () {
         if (s == 'Send MRG') {
-        } else if (s == 'Redeem Voucher') {}
+          Get.to(()=>SendMRGScreen());
+        } else if (s == 'Redeem Voucher') {
+
+        }
       },
       child: Card(
         elevation: 5,
