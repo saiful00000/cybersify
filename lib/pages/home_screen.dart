@@ -5,6 +5,7 @@ import 'package:cybersify/database/database.dart';
 import 'package:cybersify/models/user_data.dart';
 import 'package:cybersify/pages/activity_list_screen.dart';
 import 'package:cybersify/pages/profile_screen.dart';
+import 'package:cybersify/pages/redeem_voucher_screen.dart';
 import 'package:cybersify/pages/send_mrg_screen.dart';
 import 'package:cybersify/pages/vendor_list_screnn.dart';
 import 'package:cybersify/pages/withdraw_screen.dart';
@@ -25,7 +26,9 @@ class HomeScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: Obx(()=>_controller.isLoading.value?CupertinoActivityIndicator():SingleChildScrollView(
+        body: Obx(()=>_controller.isLoading.value?Center(
+          child: CupertinoActivityIndicator(),
+        ):SingleChildScrollView(
             child: Column(
               children: [
                 Container(
@@ -221,7 +224,7 @@ class HomeScreen extends StatelessWidget {
         if (s == 'Send MRG') {
           Get.to(()=>SendMRGScreen());
         } else if (s == 'Redeem Voucher') {
-
+          Get.to(()=>RedeemVoucherScreen());
         }
       },
       child: Card(

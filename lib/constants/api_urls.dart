@@ -1,5 +1,5 @@
 class ApiUrls {
-  static final baseUrl = 'http://re.hellohasib.com';
+    static final baseUrl = 'http://re.hellohasib.com';
 
   //------------------------------------URLS----------------------------------//
   static String loginUrl(String email, String password) =>
@@ -20,5 +20,6 @@ class ApiUrls {
   static String vendorListUrl = '$baseUrl/api/vendor-list';
   static String activityListUrl = '$baseUrl/api/activity';
   static String getProfileUrl = '$baseUrl/api/profile';
+  static String reDeemVoucher = '$baseUrl/redeem-voucher';
 
 }
