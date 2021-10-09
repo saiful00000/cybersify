@@ -1,4 +1,5 @@
 import 'package:cybersify/repositories/auth_repo.dart';
+import 'package:cybersify/utils/ProgressDialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,11 +22,9 @@ class ChangePasswordController extends GetxController{
     body['old_pass'] = '$old';
     body['new_pass'] = '$new2';
 
-    apiLoading = true;
-    update();
+    showProgressDialog('Changing password');
     String message = await repo.changePassword(body);
-    apiLoading = false;
-    update();
+    Get.back();
 
     Get.rawSnackbar(backgroundColor: Colors.blue, messageText: Text('$message', style: TextStyle(color: Colors.white)));
   }

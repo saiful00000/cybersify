@@ -1,5 +1,7 @@
 import 'package:cybersify/controllers/profile_screen_controller.dart';
+import 'package:cybersify/database/database.dart';
 import 'package:cybersify/pages/change_password_screen.dart';
+import 'package:cybersify/pages/login_page.dart';
 import 'package:cybersify/utils/screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -109,7 +111,20 @@ class ProfileScreen extends StatelessWidget {
                 _cardItem(
                   title: 'Logout',
                   icon: Icons.logout,
-                  ontap: () {},
+                  ontap: () {
+                    Get.defaultDialog(
+                        barrierDismissible: false,
+                        title: 'Warning',
+                        middleText: 'Are you sure to logout?',
+                        textConfirm: 'Ok',
+                        confirmTextColor: Colors.white,
+                        buttonColor: Color(0xff051C3E),
+                        onConfirm: () async {
+                          await Database.instance.logOut();
+                          Get.offAll(LoginPage());
+                        },
+                    );
+                  },
                 ),
               ],
             ),

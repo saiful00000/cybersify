@@ -93,4 +93,25 @@ class AuthRepo {
     return 'Failed';
   }
 
+
+  Future<String> forgotPassword (Map<String, String> body) async {
+    try{
+      Uri url = Uri.parse(ApiUrls.resetPasswordUrl());
+      dynamic userData = await Database.instance.getUserData();
+      var headers = {'Authorization':('Bearer ${userData['data']['token']}')};
+
+      final response = await http.post(url, body: body, headers: headers);
+
+      print('forget response = ${response.statusCode} = ${response.body}');
+
+      return jsonDecode(response.body)['message'];
+
+    } catch (e, t){
+      print('$e');
+      print('$t');
+    }
+
+    return 'Failed';
+  }
+
 }
