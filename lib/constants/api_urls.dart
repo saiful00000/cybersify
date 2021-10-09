@@ -21,5 +21,6 @@ class ApiUrls {
   static String activityListUrl = '$baseUrl/api/activity';
   static String getProfileUrl = '$baseUrl/api/profile';
   static String reDeemVoucher = '$baseUrl/redeem-voucher';
+  static String changePassword = '$baseUrl/api/change-password';
 
 }

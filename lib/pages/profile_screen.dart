@@ -1,4 +1,5 @@
 import 'package:cybersify/controllers/profile_screen_controller.dart';
+import 'package:cybersify/pages/change_password_screen.dart';
 import 'package:cybersify/utils/screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -94,7 +95,9 @@ class ProfileScreen extends StatelessWidget {
                 _cardItem(
                   title: 'Change My Password',
                   icon: CupertinoIcons.lock_open_fill,
-                  ontap: () {},
+                  ontap: () {
+                    Get.to(() => ChangePasswordScreen());
+                  },
                 ),
 
                 _cardItem(
