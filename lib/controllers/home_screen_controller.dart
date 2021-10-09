@@ -15,36 +15,37 @@ class HomeScreenController extends GetxController{
   HomeRepository homeRepository;
 
   RxObjectMixin<ProfileData> profileData = ProfileData().obs;
+  var isLoading = false.obs;
   @override
   void onInit() {
-    print('called oninit');
     homeRepository = HomeRepository();
-    //getProfileData();
     super.onInit();
 
     getProfileData();
   }
   void getProfileData() async {
     try{
-      showProgressDialog('Loading');
+      isLoading.value = true;
       Uri url = Uri.parse(ApiUrls.profileUrl);
 
       dynamic userData = await Database.instance.getUserData();
       final response = await http.get(url,headers: {
         'Authorization':('Bearer ${userData['data']['token']}')
       });
-      print('response body = ${  response.body}');
 
       if (response.statusCode == 200){
         var body = jsonDecode(response.body);
+        Database.instance.saveProfileData(response.body);
         profileData.value = ProfileData.fromJson(body);
-        Get.back();
+        isLoading.value = false;
       }else{
+        isLoading.value = false;
         Get.back();
         alertDialog('Alert!', 'Internal error occurred.');
       }
 
     }catch(err){
+      isLoading.value = false;
       alertDialog('Alert!', 'Internal error occurred.');
       throw Exception(err);
     }

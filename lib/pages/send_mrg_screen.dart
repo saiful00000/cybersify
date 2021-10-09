@@ -1,11 +1,12 @@
+import 'package:cybersify/controllers/send_mrg_controller.dart';
 import 'package:cybersify/controllers/withdraw_screen_controller.dart';
 import 'package:cybersify/utils/screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class WithdrawScreen extends StatelessWidget {
-  WithdrawScreenController _controller = Get.put(WithdrawScreenController());
+class SendMRGScreen extends StatelessWidget {
+  SendMRGController _controller = Get.put(SendMRGController());
   Function wp = () {};
   Function hp = () {};
 
@@ -13,7 +14,6 @@ class WithdrawScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     wp = Screen(MediaQuery.of(context).size).wp;
     hp = Screen(MediaQuery.of(context).size).hp;
-    _controller.getProfileData();
     return SafeArea(
         child: Scaffold(
       backgroundColor: Colors.white,
@@ -81,7 +81,7 @@ class WithdrawScreen extends StatelessWidget {
                       height: 20,
                     ),
                     Text(
-                      "${_controller.profiledata.value.profile.balance??'0'} MRG",
+                      "${_controller.profiledata.value.profile.balance} MRG",
                       style: TextStyle(
                           fontSize: 35,
                           color: Colors.white,
@@ -114,7 +114,7 @@ class WithdrawScreen extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(left: 20, right: 20),
               child: Form(
-                key: _controller.withdrawFormKey,
+                key: _controller.sendMRGFormKey,
                 child: Column(
                   children: [
                     SizedBox(
@@ -123,9 +123,9 @@ class WithdrawScreen extends StatelessWidget {
                     TextFormField(
                       textAlign: TextAlign.center,
                       keyboardType: TextInputType.text,
-                      controller: _controller.bankDetailsController,
+                      controller: _controller.walletIdController,
                       decoration: InputDecoration(
-                        hintText: 'Bank details',
+                        hintText: 'Wallet Id',
                         hintStyle: TextStyle(
                           color: Colors.grey,
                         ),
@@ -138,7 +138,7 @@ class WithdrawScreen extends StatelessWidget {
                         fillColor: Colors.grey[100],
                       ),
                       validator: (v) {
-                        return v.isEmpty ? 'Bank details required.' : null;
+                        return v.isEmpty ? 'Wallet Address required.' : null;
                       },
                     ),
                     SizedBox(
@@ -166,10 +166,33 @@ class WithdrawScreen extends StatelessWidget {
                     SizedBox(
                       height: hp(2),
                     ),
+                    TextFormField(
+                      textAlign: TextAlign.center,
+                      keyboardType: TextInputType.phone,
+                      obscureText: true,
+                      controller: _controller.passController,
+                      decoration: InputDecoration(
+                        hintText: 'Password',
+                        hintStyle: TextStyle(color: Colors.grey),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 16),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: BorderSide.none,
+                        ),
+                        filled: true,
+                        fillColor: Colors.grey[100],
+                      ),
+                      validator: (v) {
+                        return v.isEmpty ? 'Amount required.' : null;
+                      },
+                    ),
+                    SizedBox(
+                      height: hp(2),
+                    ),
                     TextButton(
                       onPressed: () {
-                        if(_controller.withdrawFormKey.currentState.validate()){
-                          _controller.postWithdrawData();
+                        if(_controller.sendMRGFormKey.currentState.validate()){
+                          _controller.postMRGData();
                         }
                       },
                       child: Container(
