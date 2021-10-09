@@ -14,12 +14,14 @@ class ApiUrls {
   static String sendMRGUrl(String walletId, String amount,String pass) =>
       '$baseUrl/api/transfer?amount=$amount&wallet=$walletId&password=$pass';
 
+    static String redeemVoucher(String voucher) =>
+        '$baseUrl/api/redeem-voucher?voucher=$voucher';
+
   static String profileUrl = '$baseUrl/api/profile';
 
 
   static String vendorListUrl = '$baseUrl/api/vendor-list';
   static String activityListUrl = '$baseUrl/api/activity';
   static String getProfileUrl = '$baseUrl/api/profile';
-  static String reDeemVoucher = '$baseUrl/redeem-voucher';
 
 }

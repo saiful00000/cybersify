@@ -35,7 +35,7 @@ class RedeemVoucherScreenController extends GetxController{
     try{
       showProgressDialog('Redeem Voucher');
       dynamic userData = await Database.instance.getUserData();
-      final response = await http.post(Uri.parse(ApiUrls.reDeemVoucher),
+      final response = await http.post(Uri.parse(ApiUrls.redeemVoucher(voucherController.text)),
           body: {
             "voucher":voucherController.text
           },
@@ -48,7 +48,7 @@ class RedeemVoucherScreenController extends GetxController{
         alertDialog('Success!', 'Redeem Voucher proceed successfully.');
       }else{
         Get.back();
-        alertDialog('Alert!', 'Internal error occurred.');
+        alertDialog('Alert!', jsonDecode(response.body)['message']??'Internal error occurred.');
       }
 
     }catch(err){
