@@ -28,6 +28,7 @@ class Profile {
   int wallet;
   String role;
   int id;
+  var usd;
 
   Profile(
       {this.name,
@@ -46,6 +47,7 @@ class Profile {
     wallet = json['wallet']??0;
     role = json['role']??'';
     id = json['id']??-1;
+    usd = json['usd']??0.0;
   }
 
   Map<String, dynamic> toJson() {
@@ -57,6 +59,7 @@ class Profile {
     data['wallet'] = this.wallet;
     data['role'] = this.role;
     data['id'] = this.id;
+    data['usd'] = this.usd;
     return data;
   }
 }

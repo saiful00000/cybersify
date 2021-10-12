@@ -114,4 +114,44 @@ class AuthRepo {
     return 'Failed';
   }
 
+  Future<String> changeEmail (String email, String pass) async {
+    try{
+      Uri url = Uri.parse(ApiUrls.changeEmailUrl(email, pass));
+      dynamic userData = await Database.instance.getUserData();
+      var headers = {'Authorization':('Bearer ${userData['data']['token']}')};
+
+      final response = await http.post(url, headers: headers);
+
+      print('change response = ${response.statusCode} = ${response.body}');
+
+      return jsonDecode(response.body)['message'];
+
+    } catch (e, t){
+      print('$e');
+      print('$t');
+    }
+
+    return 'Failed';
+  }
+
+  Future<String> changePhone (String phone, String pass) async {
+    try{
+      Uri url = Uri.parse(ApiUrls.changePhoneUrl(phone, pass));
+      dynamic userData = await Database.instance.getUserData();
+      var headers = {'Authorization':('Bearer ${userData['data']['token']}')};
+
+      final response = await http.post(url, headers: headers);
+
+      print('change response = ${response.statusCode} = ${response.body}');
+
+      return jsonDecode(response.body)['message'];
+
+    } catch (e, t){
+      print('$e');
+      print('$t');
+    }
+
+    return 'Failed';
+  }
+
 }

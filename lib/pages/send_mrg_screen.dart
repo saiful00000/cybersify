@@ -91,7 +91,7 @@ class SendMRGScreen extends StatelessWidget {
                       height: 15,
                     ),
                     Text(
-                      "= 2892.20 USD",
+                      "= ${_controller.profiledata.value.profile.usd ?? '0'} USD",
                       style: TextStyle(
                           fontSize: 18,
                           color: Colors.white,

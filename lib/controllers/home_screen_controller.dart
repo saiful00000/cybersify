@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:cybersify/constants/api_urls.dart';
 import 'package:cybersify/database/database.dart';
@@ -33,6 +34,8 @@ class HomeScreenController extends GetxController{
       final response = await http.get(url,headers: {
         'Authorization':('Bearer ${userData['data']['token']}')
       });
+
+      log('profile = ' + response.body);
 
       if (response.statusCode == 200){
         var body = jsonDecode(response.body);

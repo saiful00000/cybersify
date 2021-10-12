@@ -63,7 +63,7 @@ class ActivityListScreen extends StatelessWidget {
                       height: 8,
                     ),
                     Text(
-                      "= 2892.20 USD",
+                      "= ${_hmController.profileData.value.profile?.balance??'0'} USD",
                       style: TextStyle(
                           fontSize: 18,
                           color: Colors.white,

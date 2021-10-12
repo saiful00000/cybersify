@@ -91,7 +91,7 @@ class WithdrawScreen extends StatelessWidget {
                       height: 15,
                     ),
                     Text(
-                      "= 2892.20 USD",
+                      "= ${_controller.profiledata.value.profile.balance??'0'} USD",
                       style: TextStyle(
                           fontSize: 18,
                           color: Colors.white,

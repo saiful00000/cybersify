@@ -25,4 +25,8 @@ class ApiUrls {
 
   static String resetPasswordUrl () => '$baseUrl/api/forget-password';
 
+  static String changeEmailUrl(String email, String pass) => '$baseUrl/api/change-email?email=$email&old_pass=$pass';
+
+  static String changePhoneUrl(String phone, String pass) => '$baseUrl/api/change-phone?phone=$phone&old_pass=$pass';
+
 }

@@ -29,4 +29,22 @@ class ChangePasswordController extends GetxController{
     Get.rawSnackbar(backgroundColor: Colors.blue, messageText: Text('$message', style: TextStyle(color: Colors.white)));
   }
 
+  void changeEmail(String email, String pass) async {
+
+    showProgressDialog('Changing email');
+    String message = await repo.changeEmail(email, pass);
+    Get.back();
+
+    Get.rawSnackbar(backgroundColor: Colors.blue, messageText: Text('$message', style: TextStyle(color: Colors.white)));
+  }
+
+  void changePhone(String email, String pass) async {
+
+    showProgressDialog('Changing phone');
+    String message = await repo.changePhone(email, pass);
+    Get.back();
+
+    Get.rawSnackbar(backgroundColor: Colors.blue, messageText: Text('$message', style: TextStyle(color: Colors.white)));
+  }
+
 }

@@ -1,6 +1,8 @@
 import 'package:cybersify/controllers/profile_screen_controller.dart';
 import 'package:cybersify/database/database.dart';
+import 'package:cybersify/pages/change_email_screen.dart';
 import 'package:cybersify/pages/change_password_screen.dart';
+import 'package:cybersify/pages/change_phone_screen.dart';
 import 'package:cybersify/pages/login_page.dart';
 import 'package:cybersify/utils/screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -85,13 +87,17 @@ class ProfileScreen extends StatelessWidget {
                 _cardItem(
                   title: 'Change My Number',
                   icon: Icons.call,
-                  ontap: () {},
+                  ontap: () {
+                    Get.to(ChangePhoneScreen());
+                  },
                 ),
 
                 _cardItem(
                   title: 'Change My E-mail',
                   icon: Icons.email,
-                  ontap: () {},
+                  ontap: () {
+                    Get.to(ChangeEmailScreen());
+                  },
                 ),
 
                 _cardItem(
