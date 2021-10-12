@@ -52,11 +52,31 @@ class MyApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: Color(0xFFE5E6E7),
       ),
-      home: HomeScreen(),
+      // home: HomeScreen(),
+      home: Test(),
     );
   }
+}
 
-  _checkuserLoginState() async {
+class Test extends StatefulWidget {
+
+  @override
+  _TestState createState() => _TestState();
+}
+
+class _TestState extends State<Test> {
+
+
+
+  @override
+  void initState() {
+
+    _checkuserLoginState();
+
+    super.initState();
+  }
+
+  void _checkuserLoginState() async {
     dynamic userData = await Database.instance.getUserData();
     if(userData != null){
       Get.offAll(()=>HomeScreen());
@@ -64,6 +84,12 @@ class MyApp extends StatelessWidget {
       Get.offAll(()=>SplashScreen());
     }
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold();
+  }
 }
+
 
 //hasib.0951@gmail.com
