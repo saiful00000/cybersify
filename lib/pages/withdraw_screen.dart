@@ -1,5 +1,8 @@
 import 'package:cybersify/controllers/withdraw_screen_controller.dart';
+import 'package:cybersify/utils/alert_dialog.dart';
 import 'package:cybersify/utils/screen.dart';
+import 'package:cybersify/widgets/bottom_nav_bar.dart';
+import 'package:cybersify/widgets/floating_btn.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -45,7 +48,7 @@ class WithdrawScreen extends StatelessWidget {
                             ClipRRect(
                               borderRadius: BorderRadius.circular(100),
                               child: Image.asset(
-                                'assets/dummy_image.png',
+                                'assets/user.png',
                                 height: 50,
                                 width: 50,
                               ),
@@ -57,12 +60,12 @@ class WithdrawScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  _controller.profiledata.value.profile.name??'',
+                                  _controller.profiledata.value.profile?.name??'',
                                   style: TextStyle(
                                       fontSize: 15, color: Colors.white),
                                 ),
                                 Text(
-                                  'Wallet is: ${_controller.profiledata.value.profile.wallet??''}',
+                                  'Wallet is: ${_controller.profiledata.value.profile?.wallet??''}',
                                   style: TextStyle(
                                       fontSize: 15, color: Colors.white),
                                 )
@@ -81,7 +84,7 @@ class WithdrawScreen extends StatelessWidget {
                       height: 20,
                     ),
                     Text(
-                      "${_controller.profiledata.value.profile.balance??'0'} MRG",
+                      "${_controller.profiledata.value.profile?.balance??'0'} MRG",
                       style: TextStyle(
                           fontSize: 35,
                           color: Colors.white,
@@ -91,7 +94,7 @@ class WithdrawScreen extends StatelessWidget {
                       height: 15,
                     ),
                     Text(
-                      "= 2892.20 USD",
+                      "= ${_controller.profiledata.value.profile?.usd??'0'} USD",
                       style: TextStyle(
                           fontSize: 18,
                           color: Colors.white,
@@ -146,7 +149,7 @@ class WithdrawScreen extends StatelessWidget {
                     ),
                     TextFormField(
                       textAlign: TextAlign.center,
-                      keyboardType: TextInputType.phone,
+                      keyboardType: TextInputType.number,
                       controller: _controller.amountController,
                       decoration: InputDecoration(
                         hintText: 'Amount',
@@ -169,7 +172,13 @@ class WithdrawScreen extends StatelessWidget {
                     TextButton(
                       onPressed: () {
                         if(_controller.withdrawFormKey.currentState.validate()){
-                          _controller.postWithdrawData();
+                          print(int.parse(_controller.amountController.text).toString()+"   "+_controller.profiledata.value.profile.wallet.toString());
+                          if(int.parse(_controller.amountController.text)>_controller.profiledata.value.profile.balance){
+                            alertDialog("Alert!", "Transfer balance can't be bigger than current balance.");
+                          }else{
+                            _controller.postWithdrawData();
+                          }
+
                         }
                       },
                       child: Container(
@@ -192,6 +201,13 @@ class WithdrawScreen extends StatelessWidget {
           ],
         ),
       ),
+
+
+
+
+          bottomNavigationBar: bottomNavBar(wp),
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+          floatingActionButton: floatingActionButton(),
     ));
   }
 }

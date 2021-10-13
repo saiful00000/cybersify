@@ -69,5 +69,11 @@ class Database{
     return null;
   }
 
+  Future logOut() async {
+    final storage = GetStorage(DatabaseKeys.db_name);
+    await storage.remove(DatabaseKeys.user_data);
+    await storage.remove(DatabaseKeys.profile_data);
+  }
+
 
 }

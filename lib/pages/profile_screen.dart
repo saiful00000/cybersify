@@ -1,5 +1,13 @@
 import 'package:cybersify/controllers/profile_screen_controller.dart';
+import 'package:cybersify/database/database.dart';
+import 'package:cybersify/pages/change_email_screen.dart';
+import 'package:cybersify/pages/change_password_screen.dart';
+import 'package:cybersify/pages/change_phone_screen.dart';
+import 'package:cybersify/pages/login_page.dart';
+import 'package:cybersify/utils/alert_dialog.dart';
 import 'package:cybersify/utils/screen.dart';
+import 'package:cybersify/widgets/bottom_nav_bar.dart';
+import 'package:cybersify/widgets/floating_btn.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -48,7 +56,7 @@ class ProfileScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Image.asset(
-                        'assets/dummy_image.png',
+                        'assets/user.png',
                         height: 100,
                         width: 100,
                       ),
@@ -82,37 +90,64 @@ class ProfileScreen extends StatelessWidget {
                 _cardItem(
                   title: 'Change My Number',
                   icon: Icons.call,
-                  ontap: () {},
+                  ontap: () {
+                    Get.to(ChangePhoneScreen());
+                  },
                 ),
 
                 _cardItem(
                   title: 'Change My E-mail',
                   icon: Icons.email,
-                  ontap: () {},
+                  ontap: () {
+                    Get.to(ChangeEmailScreen());
+                  },
                 ),
 
                 _cardItem(
                   title: 'Change My Password',
                   icon: CupertinoIcons.lock_open_fill,
-                  ontap: () {},
+                  ontap: () {
+                    Get.to(() => ChangePasswordScreen());
+                  },
                 ),
 
                 _cardItem(
                   title: 'Customer support',
                   icon: Icons.headset_mic_rounded,
-                  ontap: () {},
+                  ontap: () {
+                    alertDialog("Info!", "For inquiries and complaints please send an email to info@cybersify.marketing");
+                  },
                 ),
 
                 _cardItem(
                   title: 'Logout',
                   icon: Icons.logout,
-                  ontap: () {},
+                  ontap: () {
+                    Get.defaultDialog(
+                        barrierDismissible: false,
+                        title: 'Warning',
+                        middleText: 'Are you sure to logout?',
+                        textConfirm: 'Ok',
+                        confirmTextColor: Colors.white,
+                        buttonColor: Color(0xff051C3E),
+                        onConfirm: () async {
+                          await Database.instance.logOut();
+                          Get.offAll(LoginPage());
+                        },
+                    );
+                  },
                 ),
               ],
             ),
           );
         }),
       ),
+
+
+
+      bottomNavigationBar: bottomNavBar(wp),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: floatingActionButton(),
     );
   }
 

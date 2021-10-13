@@ -1,9 +1,8 @@
 import 'package:cybersify/database/database.dart';
 import 'package:cybersify/pages/home_screen.dart';
 import 'package:cybersify/pages/login_page.dart';
-import 'package:cybersify/pages/pass_base_verification_scree.dart';
+import 'package:cybersify/pages/sign_up_page.dart';
 import 'package:cybersify/pages/splash_screen.dart';
-import 'package:cybersify/pages/verify_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -11,8 +10,8 @@ import 'package:passbase_flutter/passbase_flutter.dart';
 
 void main() async {
   await GetStorage.init(DatabaseKeys.db_name);
-  PassbaseSDK.prefillUserEmail = "hasib2@xkx.me";
-  PassbaseSDK.initialize(publishableApiKey: "cXR0ynShp46OvwTFEL1KHjvleyzQWpXjsx2ryrIiB27LFbLdLw54pGw0ck9Ciqeq");
+  //PassbaseSDK.prefillUserEmail = "hasib2@xkx.me";
+  //PassbaseSDK.initialize(publishableApiKey: "cXR0ynShp46OvwTFEL1KHjvleyzQWpXjsx2ryrIiB27LFbLdLw54pGw0ck9Ciqeq");
 
   runApp(MyApp());
 }
@@ -52,20 +51,9 @@ class MyApp extends StatelessWidget {
           secondaryVariant: Color(0xff051C3E),
         ),
         scaffoldBackgroundColor: Color(0xFFE5E6E7),
-
       ),
-      home: /*SignUpPage()*/SplashScreen()/*VerifyScreen()*//*HomeScreen()*//*PassbaseVerificationScreen()*//*LoginPage()*//*HomeScreen()*/,
+      home: HomeScreen(),
+      //home: SplashScreen()
     );
   }
-
-  _checkuserLoginState() async {
-    dynamic userData = await Database.instance.getUserData();
-    if(userData != null){
-      Get.offAll(()=>HomeScreen());
-    }else{
-      Get.offAll(()=>SplashScreen());
-    }
-  }
 }
-
-//hasib.0951@gmail.com

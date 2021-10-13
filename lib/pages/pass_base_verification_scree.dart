@@ -1,9 +1,16 @@
+import 'dart:convert';
+
+import 'package:cybersify/constants/api_urls.dart';
+import 'package:cybersify/database/database.dart';
+import 'package:cybersify/models/profile_data.dart';
 import 'package:cybersify/pages/home_screen.dart';
+import 'package:cybersify/utils/Utils.dart';
 import 'package:cybersify/utils/alert_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:passbase_flutter/passbase_flutter.dart';
+import 'package:http/http.dart' as http;
 
 class PassbaseVerificationScreen extends StatelessWidget {
 
@@ -53,7 +60,7 @@ class PassbaseVerificationScreen extends StatelessWidget {
               padding: EdgeInsets.only(bottom: 70),
               child: PassbaseButton(
                 onFinish: (identityAccessKey) {
-                  Get.to(()=>HomeScreen());
+                  _checkStatus();
                 },
                 onError: (errorCode) {
                   alertDialog('Error!', 'Error occurred to verify via passbase. Please try again later.');
@@ -70,4 +77,27 @@ class PassbaseVerificationScreen extends StatelessWidget {
       ),
     );
   }
+
+  void _checkStatus() async {
+    Uri url = Uri.parse(ApiUrls.profileUrl);
+
+    dynamic userData = await Database.instance.getUserData();
+    final response = await http.get(url,headers: {
+      'Authorization':('Bearer ${userData['data']['token']}')
+    });
+
+    if (response.statusCode == 200){
+      var body = jsonDecode(response.body);
+      Database.instance.saveProfileData(response.body);
+      ProfileData data = ProfileData.fromJson(body);
+      if(statusStrList.contains(userData.verificationStatus??'')){
+        Get.offAll(()=>HomeScreen());
+      }else{
+        alertDialog('Error!', 'Verification failed!. Try again later.');
+      }
+    }else{
+      alertDialog('Alert!', 'Internal error occurred.');
+    }
+  }
+
 }

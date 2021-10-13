@@ -2,6 +2,8 @@ import 'package:cybersify/controllers/activity_list_screen_controller.dart';
 import 'package:cybersify/controllers/home_screen_controller.dart';
 import 'package:cybersify/models/activity)data_model.dart';
 import 'package:cybersify/utils/screen.dart';
+import 'package:cybersify/widgets/bottom_nav_bar.dart';
+import 'package:cybersify/widgets/floating_btn.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,8 +23,10 @@ class ActivityListScreen extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Column(
+
             children: [
               Container(
                 width: wp(100),
@@ -38,7 +42,8 @@ class ActivityListScreen extends StatelessWidget {
                   ),
                 ),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       "Balance",
@@ -63,7 +68,7 @@ class ActivityListScreen extends StatelessWidget {
                       height: 8,
                     ),
                     Text(
-                      "= 2892.20 USD",
+                      "= ${_hmController.profileData.value.profile?.usd??'0'} USD",
                       style: TextStyle(
                           fontSize: 18,
                           color: Colors.white,
@@ -82,7 +87,6 @@ class ActivityListScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 16,),
 
               GetBuilder<ActivityListScreenController>(builder: (controller){
                 if (_controller.apiLoading) {
@@ -95,7 +99,7 @@ class ActivityListScreen extends StatelessWidget {
                   );
                 }
                 return ListView.builder(
-                  itemCount: /*_controller.activityList.length*/2,
+                  itemCount: _controller.activityList.length,
                   shrinkWrap: true,
                   physics: BouncingScrollPhysics(),
                   itemBuilder: (context, index) {
@@ -136,6 +140,13 @@ class ActivityListScreen extends StatelessWidget {
             ],
           ),
         ),
+
+
+
+
+        bottomNavigationBar: bottomNavBar(wp),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: floatingActionButton(),
       ),
     );
   }

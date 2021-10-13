@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:cybersify/constants/api_urls.dart';
 import 'package:cybersify/database/database.dart';
 import 'package:cybersify/models/profile_data.dart';
+import 'package:cybersify/pages/home_screen.dart';
 import 'package:cybersify/utils/ProgressDialog.dart';
 import 'package:cybersify/utils/alert_dialog.dart';
 import 'package:flutter/cupertino.dart';
@@ -50,7 +51,9 @@ class SendMRGController extends GetxController{
         amountController.clear();
         passController.clear();
         print(response.body);
-        alertDialog('Success!', 'Withdraw proceed successfully.');
+        alertDialog('Success!', 'Withdraw proceed successfully.',onTap: (){
+          Get.offAll(()=>HomeScreen());
+        });
       }else{
         Get.back();
         alertDialog('Alert!', 'Internal error occurred.');

@@ -1,6 +1,8 @@
 import 'package:cybersify/controllers/vendor_screen_controller.dart';
 import 'package:cybersify/models/vendor_data_model.dart';
 import 'package:cybersify/utils/screen.dart';
+import 'package:cybersify/widgets/bottom_nav_bar.dart';
+import 'package:cybersify/widgets/floating_btn.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -29,7 +31,7 @@ class VendorListScreen extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
                   child: Image.asset(
-                    'assets/dummy_image.png',
+                    'assets/user.png',
                     height: 50,
                     width: 50,
                   ),
@@ -115,6 +117,13 @@ class VendorListScreen extends StatelessWidget {
             ],
           ),
         ),
+
+
+
+
+        bottomNavigationBar: bottomNavBar(wp),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: floatingActionButton(),
       ),
     );
   }

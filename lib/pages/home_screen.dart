@@ -9,7 +9,10 @@ import 'package:cybersify/pages/redeem_voucher_screen.dart';
 import 'package:cybersify/pages/send_mrg_screen.dart';
 import 'package:cybersify/pages/vendor_list_screnn.dart';
 import 'package:cybersify/pages/withdraw_screen.dart';
+import 'package:cybersify/utils/alert_dialog.dart';
 import 'package:cybersify/utils/screen.dart';
+import 'package:cybersify/widgets/bottom_nav_bar.dart';
+import 'package:cybersify/widgets/floating_btn.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -52,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(100),
                           child: Image.asset(
-                            'assets/dummy_image.png',
+                            'assets/user.png',
                             height: 50,
                             width: 50,
                           ),
@@ -81,7 +84,7 @@ class HomeScreen extends StatelessWidget {
                         height: 15,
                       ),
                       Text(
-                        "= 2892.20 USD",
+                        "= ${_controller.profileData?.value?.profile?.usd ?? '0'} USD",
                         style: TextStyle(
                             fontSize: 18,
                             color: Colors.white,
@@ -149,7 +152,9 @@ class HomeScreen extends StatelessWidget {
                             _cardItem(
                               title: 'Customer\nSupport',
                               image: 'assets/customer_sup.png',
-                              onTap: () {},
+                              onTap: () {
+                                alertDialog("Info!", "For inquiries and complaints please send an email to info@cybersify.marketing");
+                              },
                             ),
                           ],
                         ),
@@ -161,59 +166,9 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
-        bottomNavigationBar: Padding(
-          padding: EdgeInsets.all(5),
-          child: Card(
-            elevation: 10,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            child: Container(
-              width: wp(100),
-              constraints: BoxConstraints(minHeight: 80),
-              padding: EdgeInsets.only(left: 20, right: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                      padding: EdgeInsets.all(0),
-                      onPressed: () {
-                        Get.to(() => ActivityListScreen());
-                      },
-                      icon: Icon(
-                        Icons.notifications,
-                        size: 50,
-                        color: Color(0xff051C3E),
-                      )),
-                  IconButton(
-                    padding: EdgeInsets.all(0),
-                    onPressed: () {
-                      Get.to(() => ProfileScreen());
-                    },
-                    icon: Icon(
-                      Icons.person,
-                      size: 50,
-                      color: Color(0xff051C3E),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
+        bottomNavigationBar: bottomNavBar(wp),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: Padding(
-          padding: EdgeInsets.only(top: 30),
-          child: FloatingActionButton(
-            backgroundColor: Colors.white,
-            onPressed: () async {
-
-            },
-            child: Padding(
-                padding: EdgeInsets.all(5),
-                child: Image.asset('assets/home.png')),
-          ),
-        ),
+        floatingActionButton: floatingActionButton(),
       ),
     );
   }

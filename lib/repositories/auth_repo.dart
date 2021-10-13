@@ -40,10 +40,6 @@ class AuthRepo {
     return null;
   }
 
-
-
-
-
   Future<bool> register(String fullName, String phoneNum,String email,String pass,String idCard) async {
     try{
       Uri url = Uri.parse(ApiUrls.registerUrl(fullName, phoneNum, email, pass, idCard));
@@ -74,6 +70,88 @@ class AuthRepo {
     }
 
     return false;
+  }
+
+
+  Future<String> changePassword (Map<String, String> body) async {
+    try{
+      Uri url = Uri.parse(ApiUrls.changePassword);
+      dynamic userData = await Database.instance.getUserData();
+      var headers = {'Authorization':('Bearer ${userData['data']['token']}')};
+
+      final response = await http.post(url, body: body, headers: headers);
+
+      print('change response = ${response.statusCode} = ${response.body}');
+
+      return jsonDecode(response.body)['message'];
+
+    } catch (e, t){
+      print('$e');
+      print('$t');
+    }
+
+    return 'Failed';
+  }
+
+
+  Future<String> forgotPassword (Map<String, String> body) async {
+    try{
+      Uri url = Uri.parse(ApiUrls.resetPasswordUrl());
+      dynamic userData = await Database.instance.getUserData();
+      var headers = {'Authorization':('Bearer ${userData['data']['token']}')};
+
+      final response = await http.post(url, body: body, headers: headers);
+
+      print('forget response = ${response.statusCode} = ${response.body}');
+
+      return jsonDecode(response.body)['message'];
+
+    } catch (e, t){
+      print('$e');
+      print('$t');
+    }
+
+    return 'Failed';
+  }
+
+  Future<String> changeEmail (String email, String pass) async {
+    try{
+      Uri url = Uri.parse(ApiUrls.changeEmailUrl(email, pass));
+      dynamic userData = await Database.instance.getUserData();
+      var headers = {'Authorization':('Bearer ${userData['data']['token']}')};
+
+      final response = await http.post(url, headers: headers);
+
+      print('change response = ${response.statusCode} = ${response.body}');
+
+      return jsonDecode(response.body)['message'];
+
+    } catch (e, t){
+      print('$e');
+      print('$t');
+    }
+
+    return 'Failed';
+  }
+
+  Future<String> changePhone (String phone, String pass) async {
+    try{
+      Uri url = Uri.parse(ApiUrls.changePhoneUrl(phone, pass));
+      dynamic userData = await Database.instance.getUserData();
+      var headers = {'Authorization':('Bearer ${userData['data']['token']}')};
+
+      final response = await http.post(url, headers: headers);
+
+      print('change response = ${response.statusCode} = ${response.body}');
+
+      return jsonDecode(response.body)['message'];
+
+    } catch (e, t){
+      print('$e');
+      print('$t');
+    }
+
+    return 'Failed';
   }
 
 }

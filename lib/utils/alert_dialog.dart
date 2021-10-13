@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void alertDialog(String title, String msg) {
+void alertDialog(String title, String msg, {Function() onTap}) {
   Get.defaultDialog(
       barrierDismissible: false,
       title: title,
@@ -9,6 +9,6 @@ void alertDialog(String title, String msg) {
       textConfirm: 'Ok',
       confirmTextColor: Colors.white,
       buttonColor: Color(0xff051C3E),
-      onConfirm: ()=>Get.back()
+      onConfirm: ()=>onTap==null?Get.back():onTap()
   );
 }

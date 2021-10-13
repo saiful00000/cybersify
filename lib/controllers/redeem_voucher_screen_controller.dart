@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:cybersify/constants/api_urls.dart';
 import 'package:cybersify/database/database.dart';
 import 'package:cybersify/models/profile_data.dart';
+import 'package:cybersify/pages/home_screen.dart';
 import 'package:cybersify/utils/ProgressDialog.dart';
 import 'package:cybersify/utils/alert_dialog.dart';
 import 'package:flutter/cupertino.dart';
@@ -45,7 +46,9 @@ class RedeemVoucherScreenController extends GetxController{
       if (response.statusCode == 200){
         voucherController.clear();
         Get.back();
-        alertDialog('Success!', 'Redeem Voucher proceed successfully.');
+        alertDialog('Success!', 'Redeem Voucher proceed successfully.',onTap:(){
+          Get.offAll(()=>HomeScreen());
+        });
       }else{
         Get.back();
         alertDialog('Alert!', jsonDecode(response.body)['message']??'Internal error occurred.');
