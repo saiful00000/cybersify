@@ -19,6 +19,7 @@ class WithdrawScreen extends StatelessWidget {
     _controller.getProfileData();
     return SafeArea(
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(

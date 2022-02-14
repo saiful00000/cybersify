@@ -19,6 +19,7 @@ class SendMRGScreen extends StatelessWidget {
     hp = Screen(MediaQuery.of(context).size).hp;
     return SafeArea(
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
@@ -48,7 +49,7 @@ class SendMRGScreen extends StatelessWidget {
                             ClipRRect(
                               borderRadius: BorderRadius.circular(100),
                               child: Image.asset(
-                                'assets/dummy_image.png',
+                                'assets/user.png',
                                 height: 50,
                                 width: 50,
                               ),

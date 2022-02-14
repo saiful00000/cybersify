@@ -51,7 +51,7 @@ class SendMRGController extends GetxController{
         amountController.clear();
         passController.clear();
         print(response.body);
-        alertDialog('Success!', 'Withdraw proceed successfully.',onTap: (){
+        alertDialog('Success!', 'Transfer proceed successfully.',onTap: (){
           Get.offAll(()=>HomeScreen());
         });
       }else{

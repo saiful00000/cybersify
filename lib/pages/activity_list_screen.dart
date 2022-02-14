@@ -12,7 +12,6 @@ class ActivityListScreen extends StatelessWidget {
   Function wp = () {};
   Function hp = () {};
 
-  HomeScreenController _hmController = Get.find();
   ActivityListScreenController _controller =
       Get.put(ActivityListScreenController());
 
@@ -57,7 +56,7 @@ class ActivityListScreen extends StatelessWidget {
                     ),
                     Obx(
                       () => Text(
-                        "${_hmController.profileData?.value?.profile?.balance ?? '0'} MRG",
+                        "${_controller.profiledata.value?.profile?.balance ?? '0'} MRG",
                         style: TextStyle(
                             fontSize: 35,
                             color: Colors.white,
@@ -68,7 +67,7 @@ class ActivityListScreen extends StatelessWidget {
                       height: 8,
                     ),
                     Text(
-                      "= ${_hmController.profileData.value.profile?.usd??'0'} USD",
+                      "= ${_controller.profiledata.value.profile?.usd??'0'} USD",
                       style: TextStyle(
                           fontSize: 18,
                           color: Colors.white,

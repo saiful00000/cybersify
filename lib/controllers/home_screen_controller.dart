@@ -22,8 +22,6 @@ class HomeScreenController extends GetxController{
   void onInit() {
     homeRepository = HomeRepository();
     super.onInit();
-
-    getProfileData();
   }
   void getProfileData() async {
     try{
@@ -51,7 +49,6 @@ class HomeScreenController extends GetxController{
     }catch(err){
       isLoading.value = false;
       alertDialog('Alert!', 'Internal error occurred.');
-      throw Exception(err);
     }
   }
 }

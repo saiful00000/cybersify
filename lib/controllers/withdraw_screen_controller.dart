@@ -44,7 +44,7 @@ class WithdrawScreenController extends GetxController{
         bankDetailsController.clear();
         amountController.clear();
         Get.back();
-        alertDialog('Success!', 'Redeem Voucher proceed successfully.',onTap:(){
+        alertDialog('Success!', 'Withdraw proceed successfully.',onTap:(){
           Get.offAll(()=>HomeScreen());
         });
       }else{

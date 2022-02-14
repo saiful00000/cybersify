@@ -26,6 +26,9 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     wp = Screen(MediaQuery.of(context).size).wp;
     hp = Screen(MediaQuery.of(context).size).hp;
+    WidgetsBinding.instance.addPostFrameCallback((_){
+      _controller.getProfileData();
+    });
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
